@@ -1,0 +1,16 @@
+<?php
+    session_start();
+    include_once "config.php";
+    error_reporting(E_ALL);
+ini_set('display_errors', 1);
+    $outgoing_id = $_SESSION['studentNo'];
+    $sql = "SELECT * FROM student WHERE NOT studentNo = {$outgoing_id} ORDER BY student_id DESC";
+    $query = mysqli_query($conn, $sql);
+    $output = "";
+    if(mysqli_num_rows($query) == 0){
+        $output .= "No members are available to chat";
+    }elseif(mysqli_num_rows($query) > 0){
+        include_once "data.php";
+    }
+    echo $output;
+?>
