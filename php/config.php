@@ -1,13 +1,18 @@
 <?php
-$hostname = getenv("DB_HOST");
-$username = getenv("DB_USER");
-$password = getenv("DB_PASS");
-$dbname   = getenv("DB_NAME");
-$port     = getenv("DB_PORT") ?: 3306;
 
-$conn = mysqli_connect($hostname, $username, $password, $dbname, $port);
+$host = getenv('DB_HOST');
+$port = getenv('DB_PORT');
+$db   = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
 
-if (!$conn) {
-    die("Database connection error");
+try {
+    $pdo = new PDO(
+        "pgsql:host=$host;port=$port;dbname=$db",
+        $user,
+        $pass,
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
+} catch (PDOException $e) {
+    die("Database connection failed");
 }
-?>
