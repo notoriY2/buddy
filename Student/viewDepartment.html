@@ -1,0 +1,157 @@
+<!doctype html>
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang=""> 
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Web Application</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="../css/style.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="../images/12.png" alt="">
+            </div>
+
+            <span class="logo_name">Buddy</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="index.php">
+                    <i class="fas fa-home"></i>
+                    <span class="link-name">Dashboard</span>
+                </a></li>
+                <li><a href="viewFaculty.html">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span class="link-name">Faculty</span>
+                </a></li>
+                <li><a href="viewDepartment.html" class="active">
+                    <i class="fas fa-building"></i>
+                    <span class="link-name">Departments</span>
+                </a></li>
+                <li><a href="studentCourses.html">
+                    <i class="fas fa-book-open"></i>
+                    <span class="link-name">Courses</span>
+                </a></li>
+                <li><a href="viewlecture.html">
+                    <i class="fas fa-user-tie"></i>
+                    <span class="link-name">Lectures</span>
+                </a></li>
+                <li><a href="trackAttendance.html">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li>
+                    <a href="#" class="toggle-submenu" data-submenu="results-submenu">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="link-name">Results</span>
+                        <i class="fas fa-chevron-right toggle-icon"></i>
+                    </a>
+                    <ul class="results-submenu submenu" style="display: none;">
+                        <li><a href="studentResult.html">Semester Results</a></li>
+                        <li><a href="viewFinalResult.html">Final Results</a></li>
+                        <li><a href="gradingCriteria.html">grading Criteria</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="user.php">
+                    <i class="fas fa-chevron-circle-left"></i>
+                    <span class="link-name">Back</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+            
+            <img src="../images/1.jpg" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title"><h2 align="center">All Department</h2></strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table" class="table table-hover table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Faculty</th>
+                                            <th>Department</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Faculty of Science</td>
+                                            <td>Department of Physics</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Faculty of Arts</td>
+                                            <td>Department of History</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Faculty of Engineering</td>
+                                            <td>Department of Electrical Engineering</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../js/script.js"></script>
+    <script>
+        // Submenu toggles
+document.addEventListener('DOMContentLoaded', function () {
+    const submenuToggles = document.querySelectorAll('.toggle-submenu');
+    
+    submenuToggles.forEach(toggle => {
+        toggle.addEventListener('click', function (event) {
+            event.preventDefault();
+            const submenu = document.querySelector(`.${this.dataset.submenu}`);
+            const icon = this.querySelector('.toggle-icon');
+            if (submenu) {
+                const isVisible = submenu.style.display === 'block';
+                submenu.style.display = isVisible ? 'none' : 'block';
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-right', isVisible);
+                    icon.classList.toggle('fa-chevron-down', !isVisible);
+                }
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>
